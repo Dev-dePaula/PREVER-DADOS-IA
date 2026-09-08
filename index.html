@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PromoRadar - Monitor de Ofertas</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+
+            <div>
+                <strong>PromoRadar</strong>
+                <span>Affiliate Monitor</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="#" class="active" data-page="dashboard">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="#" data-page="produtos">
+                <i class="fa-solid fa-box"></i>
+                Produtos
+            </a>
+
+            <a href="#" data-page="promocoes">
+                <i class="fa-solid fa-tags"></i>
+                Promoções
+            </a>
+
+            <a href="#" data-page="telegram">
+                <i class="fa-brands fa-telegram"></i>
+                Telegram
+            </a>
+
+            <a href="#" data-page="config">
+                <i class="fa-solid fa-gear"></i>
+                Configurações
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Sistema Online</strong>
+                    <small>Monitoramento ativo</small>
+                </div>
+            </div>
+
+            <div class="version">
+                v1.0.0 • MVP
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+
+                <p>
+                    Monitoramento inteligente de preços e promoções
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="live">
+
+                    <span class="pulse"></span>
+
+                    <span>LIVE</span>
+
+                </div>
+
+                <div class="notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>3</span>
+                </div>
+
+                <div class="user">
+
+                    <div class="avatar">
+                        AP
+                    </div>
+
+                    <div>
+                        <strong>Administrador</strong>
+                        <small>Afiliado</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active-page">
+
+            <!-- STATS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Produtos monitorados</span>
+
+                        <strong id="totalProducts">
+                            1.284
+                        </strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            +12% este mês
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Promoções detectadas</span>
+
+                        <strong id="totalPromotions">
+                            87
+                        </strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            +24 hoje
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Publicações Telegram</span>
+
+                        <strong id="totalPublished">
+                            63
+                        </strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            +18 hoje
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Desconto médio</span>
+
+                        <strong>
+                            38%
+                        </strong>
+
+                        <small class="positive">
+                            +5.4% vs. mês anterior
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MONITOR -->
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Monitoramento em tempo real</h2>
+
+                    <p>
+                        Últimos preços identificados pelo sistema
+                    </p>
+                </div>
+
+                <div class="filters">
+
+                    <select id="storeFilter">
+
+                        <option value="all">
+                            Todas as lojas
+                        </option>
+
+                        <option value="Amazon">
+                            Amazon
+                        </option>
+
+                        <option value="Mercado Livre">
+                            Mercado Livre
+                        </option>
+
+                        <option value="KaBuM!">
+                            KaBuM!
+                        </option>
+
+                        <option value="Magalu">
+                            Magalu
+                        </option>
+
+                    </select>
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            Todas categorias
+                        </option>
+
+                        <option value="Eletrônicos">
+                            Eletrônicos
+                        </option>
+
+                        <option value="Informática">
+                            Informática
+                        </option>
+
+                        <option value="Casa">
+                            Casa
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="products-table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Produto</th>
+
+                            <th>Loja</th>
+
+                            <th>Preço anterior</th>
+
+                            <th>Preço atual</th>
+
+                            <th>Desconto</th>
+
+                            <th>Score</th>
+
+                            <th>Status</th>
+
+                            <th></th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="productsTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- BOTTOM -->
+
+            <div class="bottom-grid">
+
+                <!-- TELEGRAM -->
+
+                <div class="panel telegram-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                <i class="fa-brands fa-telegram"></i>
+                                Canal Telegram
+                            </h3>
+
+                            <span>
+                                @ofertas_promoradar
+                            </span>
+
+                        </div>
+
+                        <div class="connected">
+                            <span></span>
+                            Conectado
+                        </div>
+
+                    </div>
+
+
+                    <div class="telegram-stats">
+
+                        <div>
+                            <strong>63</strong>
+                            <span>Publicações hoje</span>
+                        </div>
+
+                        <div>
+                            <strong>8.742</strong>
+                            <span>Inscritos</span>
+                        </div>
+
+                        <div>
+                            <strong>92%</strong>
+                            <span>Taxa de sucesso</span>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="telegram-button"
+                        onclick="openTelegram()"
+                    >
+
+                        <i class="fa-brands fa-telegram"></i>
+
+                        Configurar Telegram
+
+                    </button>
+
+                </div>
+
+
+                <!-- ACTIVITY -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Atividade recente
+                            </h3>
+
+                            <span>
+                                Últimas ações do sistema
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="activity-list"
+                        id="activityList"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUTOS -->
+
+        <section id="produtos" class="page">
+
+            <div class="page-card">
+
+                <h2>Produtos monitorados</h2>
+
+                <p>
+                    Gerencie os produtos que serão acompanhados pelo sistema.
+                </p>
+
+                <button
+                    class="primary-button"
+                    onclick="addProduct()"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    Adicionar produto
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROMOÇÕES -->
+
+        <section id="promocoes" class="page">
+
+            <div class="page-card">
+
+                <h2>Promoções detectadas</h2>
+
+                <p>
+                    Ofertas identificadas automaticamente pelo algoritmo.
+                </p>
+
+                <div
+                    id="promotionsGrid"
+                    class="promotion-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TELEGRAM -->
+
+        <section id="telegram" class="page">
+
+            <div class="page-card">
+
+                <h2>Integração Telegram</h2>
+
+                <p>
+                    Configure o Bot e o canal responsável pelas publicações.
+                </p>
+
+                <div class="form-grid">
+
+                    <label>
+                        Token do Bot
+                        <input
+                            type="password"
+                            placeholder="123456:ABC..."
+                        >
+                    </label>
+
+                    <label>
+                        ID do Canal
+                        <input
+                            type="text"
+                            placeholder="@meucanal"
+                        >
+                    </label>
+
+                </div>
+
+                <button class="primary-button">
+                    Salvar configuração
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONFIG -->
+
+        <section id="config" class="page">
+
+            <div class="page-card">
+
+                <h2>Configurações</h2>
+
+                <p>
+                    Regras automáticas para identificação de promoções.
+                </p>
+
+                <div class="settings">
+
+                    <div class="setting">
+
+                        <div>
+
+                            <strong>
+                                Publicação automática
+                            </strong>
+
+                            <small>
+                                Publicar ofertas automaticamente no Telegram.
+                            </small>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting">
+
+                        <div>
+
+                            <strong>
+                                Desconto mínimo
+                            </strong>
+
+                            <small>
+                                Publicar somente descontos acima de 20%.
+                            </small>
+
+                        </div>
+
+                        <input
+                            class="number-input"
+                            type="number"
+                            value="20"
+                        >
+
+                    </div>
+
+
+                    <div class="setting">
+
+                        <div>
+
+                            <strong>
+                                Score mínimo
+                            </strong>
+
+                            <small>
+                                Qualidade mínima para uma oferta.
+                            </small>
+
+                        </div>
+
+                        <input
+                            class="number-input"
+                            type="number"
+                            value="80"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL TELEGRAM -->
+
+<div
+    class="modal"
+    id="telegramModal"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="close"
+            onclick="closeTelegram()"
+        >
+            ×
+        </button>
+
+        <div class="telegram-logo">
+            <i class="fa-brands fa-telegram"></i>
+        </div>
+
+        <h2>Publicar no Telegram</h2>
+
+        <p>
+            A oferta será publicada no canal configurado.
+        </p>
+
+        <div
+            class="telegram-preview"
+            id="telegramPreview"
+        ></div>
+
+        <button
+            class="primary-button full"
+            onclick="publishTelegram()"
+        >
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Publicar agora
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
