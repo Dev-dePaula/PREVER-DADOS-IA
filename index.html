@@ -1,668 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PromoRadar - Monitor de Ofertas</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prever Data Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div class="app">
-
-    <!-- SIDEBAR -->
+  <div class="app">
     <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">PD</div>
+        <div><strong>PREVER</strong><span>DATA INTELLIGENCE</span></div>
+      </div>
 
-        <div class="logo">
-            <div class="logo-icon">
-                <i class="fa-solid fa-bolt"></i>
-            </div>
+      <nav>
+        <button class="nav-item active" data-page="dashboard">▦ <span>Dashboard</span></button>
+        <button class="nav-item" data-page="analytics">◈ <span>IA Analytics</span></button>
+        <button class="nav-item" data-page="quality">✓ <span>Data Quality</span></button>
+        <button class="nav-item" data-page="anomalies">⚠ <span>Anomalias</span></button>
+        <button class="nav-item" data-page="sql">⌘ <span>SQL Explorer</span></button>
+      </nav>
 
-            <div>
-                <strong>PromoRadar</strong>
-                <span>Affiliate Monitor</span>
-            </div>
-        </div>
-
-        <nav>
-
-            <a href="#" class="active" data-page="dashboard">
-                <i class="fa-solid fa-chart-line"></i>
-                Dashboard
-            </a>
-
-            <a href="#" data-page="produtos">
-                <i class="fa-solid fa-box"></i>
-                Produtos
-            </a>
-
-            <a href="#" data-page="promocoes">
-                <i class="fa-solid fa-tags"></i>
-                Promoções
-            </a>
-
-            <a href="#" data-page="telegram">
-                <i class="fa-brands fa-telegram"></i>
-                Telegram
-            </a>
-
-            <a href="#" data-page="config">
-                <i class="fa-solid fa-gear"></i>
-                Configurações
-            </a>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <div class="system-status">
-                <span class="status-dot"></span>
-
-                <div>
-                    <strong>Sistema Online</strong>
-                    <small>Monitoramento ativo</small>
-                </div>
-            </div>
-
-            <div class="version">
-                v1.0.0 • MVP
-            </div>
-
-        </div>
-
+      <div class="sidebar-bottom">
+        <div class="demo-badge">CASE DEMONSTRATIVO<br><small>Dados fictícios</small></div>
+        <div class="user-mini"><div class="avatar">AD</div><div><b>Anderson</b><small>Developer</small></div></div>
+      </div>
     </aside>
 
-
-    <!-- MAIN -->
     <main class="main">
-
-        <!-- TOPBAR -->
-        <header class="topbar">
-
-            <div>
-                <h1 id="pageTitle">Dashboard</h1>
-
-                <p>
-                    Monitoramento inteligente de preços e promoções
-                </p>
-            </div>
-
-            <div class="top-actions">
-
-                <div class="live">
-
-                    <span class="pulse"></span>
-
-                    <span>LIVE</span>
-
-                </div>
-
-                <div class="notification">
-                    <i class="fa-regular fa-bell"></i>
-                    <span>3</span>
-                </div>
-
-                <div class="user">
-
-                    <div class="avatar">
-                        AP
-                    </div>
-
-                    <div>
-                        <strong>Administrador</strong>
-                        <small>Afiliado</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- DASHBOARD -->
-        <section id="dashboard" class="page active-page">
-
-            <!-- STATS -->
-
-            <div class="stats-grid">
-
-                <div class="stat-card">
-
-                    <div class="stat-icon purple">
-                        <i class="fa-solid fa-box"></i>
-                    </div>
-
-                    <div class="stat-content">
-
-                        <span>Produtos monitorados</span>
-
-                        <strong id="totalProducts">
-                            1.284
-                        </strong>
-
-                        <small class="positive">
-                            <i class="fa-solid fa-arrow-up"></i>
-                            +12% este mês
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon orange">
-                        <i class="fa-solid fa-fire"></i>
-                    </div>
-
-                    <div class="stat-content">
-
-                        <span>Promoções detectadas</span>
-
-                        <strong id="totalPromotions">
-                            87
-                        </strong>
-
-                        <small class="positive">
-                            <i class="fa-solid fa-arrow-up"></i>
-                            +24 hoje
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon green">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </div>
-
-                    <div class="stat-content">
-
-                        <span>Publicações Telegram</span>
-
-                        <strong id="totalPublished">
-                            63
-                        </strong>
-
-                        <small class="positive">
-                            <i class="fa-solid fa-arrow-up"></i>
-                            +18 hoje
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon blue">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-
-                    <div class="stat-content">
-
-                        <span>Desconto médio</span>
-
-                        <strong>
-                            38%
-                        </strong>
-
-                        <small class="positive">
-                            +5.4% vs. mês anterior
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- MONITOR -->
-
-            <div class="section-header">
-
-                <div>
-                    <h2>Monitoramento em tempo real</h2>
-
-                    <p>
-                        Últimos preços identificados pelo sistema
-                    </p>
-                </div>
-
-                <div class="filters">
-
-                    <select id="storeFilter">
-
-                        <option value="all">
-                            Todas as lojas
-                        </option>
-
-                        <option value="Amazon">
-                            Amazon
-                        </option>
-
-                        <option value="Mercado Livre">
-                            Mercado Livre
-                        </option>
-
-                        <option value="KaBuM!">
-                            KaBuM!
-                        </option>
-
-                        <option value="Magalu">
-                            Magalu
-                        </option>
-
-                    </select>
-
-                    <select id="categoryFilter">
-
-                        <option value="all">
-                            Todas categorias
-                        </option>
-
-                        <option value="Eletrônicos">
-                            Eletrônicos
-                        </option>
-
-                        <option value="Informática">
-                            Informática
-                        </option>
-
-                        <option value="Casa">
-                            Casa
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="products-table-wrapper">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Produto</th>
-
-                            <th>Loja</th>
-
-                            <th>Preço anterior</th>
-
-                            <th>Preço atual</th>
-
-                            <th>Desconto</th>
-
-                            <th>Score</th>
-
-                            <th>Status</th>
-
-                            <th></th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="productsTable">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-
-            <!-- BOTTOM -->
-
-            <div class="bottom-grid">
-
-                <!-- TELEGRAM -->
-
-                <div class="panel telegram-panel">
-
-                    <div class="panel-header">
-
-                        <div>
-
-                            <h3>
-                                <i class="fa-brands fa-telegram"></i>
-                                Canal Telegram
-                            </h3>
-
-                            <span>
-                                @ofertas_promoradar
-                            </span>
-
-                        </div>
-
-                        <div class="connected">
-                            <span></span>
-                            Conectado
-                        </div>
-
-                    </div>
-
-
-                    <div class="telegram-stats">
-
-                        <div>
-                            <strong>63</strong>
-                            <span>Publicações hoje</span>
-                        </div>
-
-                        <div>
-                            <strong>8.742</strong>
-                            <span>Inscritos</span>
-                        </div>
-
-                        <div>
-                            <strong>92%</strong>
-                            <span>Taxa de sucesso</span>
-                        </div>
-
-                    </div>
-
-
-                    <button
-                        class="telegram-button"
-                        onclick="openTelegram()"
-                    >
-
-                        <i class="fa-brands fa-telegram"></i>
-
-                        Configurar Telegram
-
-                    </button>
-
-                </div>
-
-
-                <!-- ACTIVITY -->
-
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-
-                            <h3>
-                                Atividade recente
-                            </h3>
-
-                            <span>
-                                Últimas ações do sistema
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="activity-list"
-                        id="activityList"
-                    ></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PRODUTOS -->
-
-        <section id="produtos" class="page">
-
-            <div class="page-card">
-
-                <h2>Produtos monitorados</h2>
-
-                <p>
-                    Gerencie os produtos que serão acompanhados pelo sistema.
-                </p>
-
-                <button
-                    class="primary-button"
-                    onclick="addProduct()"
-                >
-                    <i class="fa-solid fa-plus"></i>
-                    Adicionar produto
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- PROMOÇÕES -->
-
-        <section id="promocoes" class="page">
-
-            <div class="page-card">
-
-                <h2>Promoções detectadas</h2>
-
-                <p>
-                    Ofertas identificadas automaticamente pelo algoritmo.
-                </p>
-
-                <div
-                    id="promotionsGrid"
-                    class="promotion-grid"
-                ></div>
-
-            </div>
-
-        </section>
-
-
-        <!-- TELEGRAM -->
-
-        <section id="telegram" class="page">
-
-            <div class="page-card">
-
-                <h2>Integração Telegram</h2>
-
-                <p>
-                    Configure o Bot e o canal responsável pelas publicações.
-                </p>
-
-                <div class="form-grid">
-
-                    <label>
-                        Token do Bot
-                        <input
-                            type="password"
-                            placeholder="123456:ABC..."
-                        >
-                    </label>
-
-                    <label>
-                        ID do Canal
-                        <input
-                            type="text"
-                            placeholder="@meucanal"
-                        >
-                    </label>
-
-                </div>
-
-                <button class="primary-button">
-                    Salvar configuração
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- CONFIG -->
-
-        <section id="config" class="page">
-
-            <div class="page-card">
-
-                <h2>Configurações</h2>
-
-                <p>
-                    Regras automáticas para identificação de promoções.
-                </p>
-
-                <div class="settings">
-
-                    <div class="setting">
-
-                        <div>
-
-                            <strong>
-                                Publicação automática
-                            </strong>
-
-                            <small>
-                                Publicar ofertas automaticamente no Telegram.
-                            </small>
-
-                        </div>
-
-                        <label class="switch">
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-                            <span></span>
-
-                        </label>
-
-                    </div>
-
-
-                    <div class="setting">
-
-                        <div>
-
-                            <strong>
-                                Desconto mínimo
-                            </strong>
-
-                            <small>
-                                Publicar somente descontos acima de 20%.
-                            </small>
-
-                        </div>
-
-                        <input
-                            class="number-input"
-                            type="number"
-                            value="20"
-                        >
-
-                    </div>
-
-
-                    <div class="setting">
-
-                        <div>
-
-                            <strong>
-                                Score mínimo
-                            </strong>
-
-                            <small>
-                                Qualidade mínima para uma oferta.
-                            </small>
-
-                        </div>
-
-                        <input
-                            class="number-input"
-                            type="number"
-                            value="80"
-                        >
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<!-- MODAL TELEGRAM -->
-
-<div
-    class="modal"
-    id="telegramModal"
->
-
-    <div class="modal-content">
-
-        <button
-            class="close"
-            onclick="closeTelegram()"
-        >
-            ×
-        </button>
-
-        <div class="telegram-logo">
-            <i class="fa-brands fa-telegram"></i>
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+        <div>
+          <h1 id="pageTitle">Dashboard Executivo</h1>
+          <p id="pageSubtitle">Visão consolidada dos principais indicadores</p>
+        </div>
+        <div class="top-actions">
+          <span class="status"><i></i> Sistema online</span>
+          <button class="icon-btn" id="themeBtn" title="Alternar tema">◐</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="page active-page">
+        <div class="kpis">
+          <article class="kpi"><div class="kpi-icon">👥</div><div><span>Associados ativos</span><strong>428.541</strong><em class="up">↑ 3,8%</em></div></article>
+          <article class="kpi"><div class="kpi-icon">R$</div><div><span>Receita mensal</span><strong>R$ 2,84M</strong><em class="up">↑ 7,2%</em></div></article>
+          <article class="kpi"><div class="kpi-icon">↗</div><div><span>Taxa de retenção</span><strong>94,7%</strong><em class="up">↑ 1,4%</em></div></article>
+          <article class="kpi"><div class="kpi-icon">!</div><div><span>Inadimplência</span><strong>8,3%</strong><em class="down">↑ 0,8%</em></div></article>
         </div>
 
-        <h2>Publicar no Telegram</h2>
+        <div class="grid-2">
+          <article class="card chart-card">
+            <div class="card-head"><div><h2>Evolução de associados</h2><p>Últimos 12 meses</p></div><select id="periodSelect"><option>12 meses</option><option>6 meses</option><option>3 meses</option></select></div>
+            <canvas id="membersChart"></canvas>
+          </article>
+          <article class="card chart-card">
+            <div class="card-head"><div><h2>Receita por região</h2><p>Distribuição estimada</p></div></div>
+            <canvas id="regionChart"></canvas>
+            <div class="legend"><span><i></i> Noroeste 38%</span><span><i></i> Centro 27%</span><span><i></i> Sul 21%</span><span><i></i> Outros 14%</span></div>
+          </article>
+        </div>
 
-        <p>
-            A oferta será publicada no canal configurado.
-        </p>
+        <div class="grid-2 lower">
+          <article class="card">
+            <div class="card-head"><div><h2>⚠ Alertas inteligentes</h2><p>Eventos identificados pela análise</p></div><button class="text-btn" data-page-link="anomalies">Ver todos →</button></div>
+            <div class="alert high"><b>Cancelamentos acima do esperado</b><span>São José do Rio Preto · +18,4%</span><strong>ALTO</strong></div>
+            <div class="alert medium"><b>Inadimplência em crescimento</b><span>Região Sul · +6,7%</span><strong>MÉDIO</strong></div>
+            <div class="alert low"><b>Receita apresentou alta</b><span>Centro · +11,2% no período</span><strong>POSITIVO</strong></div>
+          </article>
+          <article class="card ai-preview">
+            <div class="ai-title"><div class="ai-orb">✦</div><div><h2>Prever AI</h2><p>Assistente de inteligência de dados</p></div></div>
+            <p class="ai-text">Pergunte sobre os indicadores e receba uma análise baseada no conjunto de dados demonstrativo.</p>
+            <div class="quick-questions"><button data-question="Quais indicadores precisam de atenção?">Indicadores críticos</button><button data-question="Qual região apresenta maior risco?">Maior risco</button></div>
+            <button class="primary" data-page-link="analytics">Abrir IA Analytics →</button>
+          </article>
+        </div>
+      </section>
 
-        <div
-            class="telegram-preview"
-            id="telegramPreview"
-        ></div>
+      <section id="analytics" class="page">
+        <div class="section-intro"><div><h2>Assistente de IA para Dados</h2><p>Faça perguntas em linguagem natural sobre o dataset.</p></div><span class="ai-chip">✦ LLM Analytics</span></div>
+        <div class="analytics-layout">
+          <article class="card chat-card">
+            <div class="chat-messages" id="chatMessages">
+              <div class="message ai"><div class="ai-orb small">✦</div><div><b>Prever AI</b><p>Olá! Posso analisar associados, receita, pagamentos, cancelamentos e indicadores de qualidade. O que você gostaria de descobrir?</p></div></div>
+            </div>
+            <div class="chat-input"><input id="chatInput" placeholder="Ex.: Qual região apresenta maior risco?"><button id="sendBtn">Enviar</button></div>
+            <div class="suggestions"><button data-question="Quais indicadores precisam de atenção?">Indicadores críticos</button><button data-question="Qual região apresenta maior risco?">Maior risco</button><button data-question="Como está a retenção?">Retenção</button></div>
+          </article>
+          <article class="card insight-card"><h2>Insights recentes</h2><div class="insight"><b>01</b><div><strong>Retenção saudável</strong><p>94,7% dos associados permanecem ativos.</p></div></div><div class="insight"><b>02</b><div><strong>Alerta regional</strong><p>Cancelamentos subiram acima da média em uma região.</p></div></div><div class="insight"><b>03</b><div><strong>Oportunidade</strong><p>Receita cresce 7,2% no período analisado.</p></div></div></article>
+        </div>
+      </section>
 
-        <button
-            class="primary-button full"
-            onclick="publishTelegram()"
-        >
+      <section id="quality" class="page">
+        <div class="section-intro"><div><h2>Data Quality</h2><p>Validação e diagnóstico do conjunto de dados.</p></div><div class="quality-score">82% <small>score geral</small></div></div>
+        <div class="quality-grid">
+          <div class="card quality-main"><div class="score-ring"><strong>82</strong><span>/100</span></div><h2>Qualidade do dataset</h2><p>O conjunto possui boa consistência, mas existem pontos que merecem tratamento antes de análises produtivas.</p><div class="progress-list"><div><span>Completude <b>91%</b></span><div><i style="width:91%"></i></div></div><div><span>Duplicidade <b>96%</b></span><div><i style="width:96%"></i></div></div><div><span>Consistência <b>84%</b></span><div><i style="width:84%"></i></div></div><div><span>Validade <b>87%</b></span><div><i style="width:87%"></i></div></div></div></div>
+          <div class="quality-side"><div class="mini-stat card"><strong>12.458</strong><span>Registros analisados</span></div><div class="mini-stat card"><strong>147</strong><span>Duplicidades</span></div><div class="mini-stat card"><strong>2,1%</strong><span>Dados ausentes</span></div><div class="mini-stat card"><strong>3</strong><span>Regras críticas</span></div></div>
+        </div>
+        <div class="card table-card"><div class="card-head"><h2>Validações executadas</h2><span class="passed">✓ 24 aprovadas</span></div><table><thead><tr><th>Regra</th><th>Campo</th><th>Resultado</th><th>Detalhes</th></tr></thead><tbody><tr><td>Obrigatoriedade</td><td>cliente_id</td><td class="ok">✓ OK</td><td>100% preenchido</td></tr><tr><td>Duplicidade</td><td>cliente_id</td><td class="warn">⚠ Atenção</td><td>147 registros</td></tr><tr><td>Formato</td><td>data_cadastro</td><td class="ok">✓ OK</td><td>ISO 8601</td></tr><tr><td>Valores nulos</td><td>valor_mensalidade</td><td class="warn">⚠ Atenção</td><td>261 registros</td></tr></tbody></table></div>
+      </section>
 
-            <i class="fa-solid fa-paper-plane"></i>
+      <section id="anomalies" class="page">
+        <div class="section-intro"><div><h2>Detecção de Anomalias</h2><p>Eventos fora do comportamento esperado.</p></div><button class="primary" id="refreshAnomalies">↻ Reprocessar análise</button></div>
+        <div class="anomaly-grid"><div class="card anomaly-card danger"><span>ALTO RISCO</span><h2>Cancelamentos</h2><strong>+18,4%</strong><p>Acima da média histórica</p><hr><b>Região:</b> São José do Rio Preto</div><div class="card anomaly-card warning"><span>ATENÇÃO</span><h2>Inadimplência</h2><strong>+6,7%</strong><p>Variação mensal</p><hr><b>Região:</b> Sul</div><div class="card anomaly-card positive"><span>POSITIVO</span><h2>Receita</h2><strong>+11,2%</strong><p>Acima da projeção</p><hr><b>Região:</b> Centro</div></div>
+        <div class="card explanation"><h2>🤖 Explicação gerada pela IA</h2><p>A análise identificou uma concentração de cancelamentos em determinados perfis de associados. A recomendação é cruzar <b>tempo de permanência, tipo de plano, inadimplência e histórico de atendimento</b> para identificar fatores associados ao aumento observado.</p></div>
+      </section>
 
-            Publicar agora
+      <section id="sql" class="page">
+        <div class="section-intro"><div><h2>SQL Explorer</h2><p>Consultas geradas e analisadas pela camada de dados.</p></div><span class="sql-chip">PostgreSQL / SQL</span></div>
+        <div class="card sql-card"><div class="sql-toolbar"><span>Consulta IA · Top municípios por inadimplência</span><button id="runSql">▶ Executar consulta</button></div><pre><code>SELECT
+    cidade,
+    COUNT(*) AS total_inadimplentes,
+    ROUND(
+      AVG(valor_mensalidade), 2
+    ) AS ticket_medio
+FROM pagamentos
+WHERE status = 'INADIMPLENTE'
+GROUP BY cidade
+ORDER BY total_inadimplentes DESC
+LIMIT 10;</code></pre><div id="sqlResult" class="sql-result hidden"><b>✓ Consulta executada</b><span>São José do Rio Preto — 1.842 registros</span><span>Mirassol — 742 registros</span><span>Catanduva — 531 registros</span></div></div>
+        <div class="card architecture"><h2>Pipeline demonstrativo</h2><div class="pipeline"><span>CSV / API</span><i>→</i><span>Python + Pandas</span><i>→</i><span>SQL</span><i>→</i><span>IA / LLM</span><i>→</i><span>Dashboard</span></div></div>
+      </section>
 
-        </button>
-
-    </div>
-
-</div>
-
-
-<script src="script.js"></script>
-
+      <footer>Prever Data Intelligence · Case demonstrativo · Dados fictícios · Python / SQL / IA / APIs / Data Analytics</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
